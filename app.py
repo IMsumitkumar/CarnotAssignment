@@ -14,7 +14,7 @@ def store_csv_data_in_redis(bucket_name, file_name):
         ACCESS_KEY = os.environ['AWS_ACCESS_KEY_ID']
         SECRET_KEY = os.environ['AWS_ACCESS_SECRET_ID']
     except KeyError:
-        return "AWS credentials not found", 500
+        raise ValueError("AWS credentials not found")
 
     try:
         s3 = boto3.client('s3', aws_access_key_id=ACCESS_KEY, aws_secret_access_key=SECRET_KEY)
@@ -153,4 +153,4 @@ if __name__ == '__main__':
     file_name = 'data/data.csv'
 
     store_csv_data_in_redis(bucket_name, file_name)
-    app.run(host='0.0.0.0', port=8000)
+    app.run()
