@@ -153,4 +153,4 @@ if __name__ == '__main__':
     file_name = 'data/data.csv'
 
     store_csv_data_in_redis(bucket_name, file_name)
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=8000)
